@@ -45,7 +45,7 @@ public class Pizzafrm extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(51, 153, 255));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         titlepnl.setFont(new java.awt.Font("Trajan Pro", 1, 14)); // NOI18N
         titlepnl.setForeground(new java.awt.Color(51, 51, 255));
@@ -118,7 +118,7 @@ public class Pizzafrm extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(promptpnl, javax.swing.GroupLayout.DEFAULT_SIZE, 398, Short.MAX_VALUE))
+                                .addComponent(promptpnl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(93, 93, 93)
                                 .addComponent(titlepnl, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -171,7 +171,10 @@ public class Pizzafrm extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(83, 83, 83))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -194,7 +197,10 @@ public class Pizzafrm extends javax.swing.JFrame {
         
         double tax;
         double taxRoundoff;
+        
         double subTotal;
+        double subTotalRoundOff;
+                
         double total;
         double totalRoundoff;
         
@@ -205,14 +211,16 @@ public class Pizzafrm extends javax.swing.JFrame {
         
         //Calculation area for subtotal, total, and taxes. Also for the rounding of values.
         subTotal = numCheese * priceCheese + numPepper * pricePepper + numVeggie * priceVeggie;
-        SubtotalArealbl.setText("$" + subTotal);
+        subTotalRoundOff = Math.round(subTotal * 100.0) / 100.0;
+        SubtotalArealbl.setText("$" + subTotalRoundOff);
         
         tax = subTotal * 0.13;
         taxRoundoff = Math.round(tax* 100.0) / 100.0;
         TaxesArealbl.setText("$" + taxRoundoff);
         
         total = subTotal + taxRoundoff;
-        TotalArealbl.setText("$" + total);
+        totalRoundoff = Math.round(total * 100.0) / 100.0;
+        TotalArealbl.setText("$" + totalRoundoff);
         
                 
     }//GEN-LAST:event_OrderbtnActionPerformed
